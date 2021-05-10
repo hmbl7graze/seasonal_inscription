@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,13 +14,67 @@ class MyApp extends StatelessWidget {
               floating: true,
               title: Text('季節の御銘'),
             ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                  return const ExpansionStatefulWidget();
-                },
-                childCount: 1,
-                semanticIndexOffset: 2,
+            SliverStickyHeader(
+              header: Container(
+                height: 60,
+                color: Colors.lightBlue,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                alignment: Alignment.centerLeft,
+                child: const Text(
+                  '1月',
+                  style: const TextStyle(color: Colors.white),
+                ),
+              ),
+              sliver: SliverList(
+                delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                    return const ExpansionStatefulWidget();
+                  },
+                  childCount: 1,//ここでデータの数を取得していれる
+                  semanticIndexOffset: 2,
+                ),
+              ),
+            ),
+            SliverStickyHeader(
+              header: Container(
+                height: 60,
+                color: Colors.lightBlue,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                alignment: Alignment.centerLeft,
+                child: const Text(
+                  '2月',
+                  style: const TextStyle(color: Colors.white),
+                ),
+              ),
+              sliver: SliverList(
+                delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                    return const ExpansionStatefulWidget();
+                  },
+                  childCount: 1,//ここでデータの数を取得していれる
+                  semanticIndexOffset: 2,
+                ),
+              ),
+            ),
+            SliverStickyHeader(
+              header: Container(
+                height: 60,
+                color: Colors.lightBlue,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                alignment: Alignment.centerLeft,
+                child: const Text(
+                  '3月',
+                  style: const TextStyle(color: Colors.white),
+                ),
+              ),
+              sliver: SliverList(
+                delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                    return const ExpansionStatefulWidget();
+                  },
+                  childCount: 1,//ここでデータの数を取得していれる
+                  semanticIndexOffset: 2,
+                ),
               ),
             ),
           ],
@@ -60,7 +115,7 @@ class ExpansionStatefulWidget extends StatefulWidget {
 }
 
 class _ExpansionStatefulWidgetState extends State<ExpansionStatefulWidget> {
-  final List<Item> _data = generateItems(50);
+  final List<Item> _data = generateItems(10);
 
   @override
   Widget build(BuildContext context) {
@@ -80,6 +135,7 @@ class _ExpansionStatefulWidgetState extends State<ExpansionStatefulWidget> {
       },
       children: _data.map<ExpansionPanel>((Item item) {
         return ExpansionPanel(
+          canTapOnHeader: true,
           headerBuilder: (BuildContext context, bool isExpanded) {
             return ListTile(
               title: Text(item.headerValue),
