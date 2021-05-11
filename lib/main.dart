@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
+import 'poetic_name_data.dart';
 
 void main() => runApp(MyApp());
 
@@ -87,21 +88,20 @@ class MyApp extends StatelessWidget {
 // stores ExpansionPanel state information
 class Item {
   Item({
-    this.expandedValue,
-    this.headerValue,
+    this.data,
     this.isExpanded = false,
   });
 
-  String expandedValue;
-  String headerValue;
+  Data data;
   bool isExpanded;
 }
 
-List<Item> generateItems(int numberOfItems) {
-  return List<Item>.generate(numberOfItems, (int index) {
+List<Item> generateItems(int month) {
+  final monthlyDatalist
+   = dataList.where((Data data) => data.month == month).toList();
+  return List<Item>.generate(monthlyDatalist.length, (int index) {
     return Item(
-      headerValue: 'Panel $index',
-      expandedValue: 'This is item number $index',
+      data: monthlyDatalist[index],
     );
   });
 }
@@ -115,7 +115,7 @@ class ExpansionStatefulWidget extends StatefulWidget {
 }
 
 class _ExpansionStatefulWidgetState extends State<ExpansionStatefulWidget> {
-  final List<Item> _data = generateItems(10);
+  final List<Item> _data = generateItems(1);
 
   @override
   Widget build(BuildContext context) {
@@ -138,11 +138,11 @@ class _ExpansionStatefulWidgetState extends State<ExpansionStatefulWidget> {
           canTapOnHeader: true,
           headerBuilder: (BuildContext context, bool isExpanded) {
             return ListTile(
-              title: Text(item.headerValue),
+              title: Text(item.data.name),
             );
           },
           body: ListTile(
-              title: Text(item.expandedValue),
+              title: Text(item.data.detail),
           ),
           isExpanded: item.isExpanded,
         );
