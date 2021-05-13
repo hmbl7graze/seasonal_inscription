@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'poetic_name_data.dart';
 
 void main() => runApp(MyApp());
@@ -97,17 +99,18 @@ class Item {
 }
 
 List<Item> generateItems(int month) {
-  final monthlyDatalist
+  final monthlyDataList
    = dataList.where((Data data) => data.month == month).toList();
-  return List<Item>.generate(monthlyDatalist.length, (int index) {
+  return List<Item>.generate(monthlyDataList.length, (int index) {
     return Item(
-      data: monthlyDatalist[index],
+      data: monthlyDataList[index],
     );
   });
 }
 
 class ExpansionStatefulWidget extends StatefulWidget {
-  const ExpansionStatefulWidget({Key key}) : super(key: key);
+  const ExpansionStatefulWidget({Key key, this.month}) : super(key: key);
+  final int month;
 
   @override
   _ExpansionStatefulWidgetState createState()
