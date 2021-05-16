@@ -26,7 +26,7 @@ dependencies:
     sdk: flutter
   flutter_hooks: ^0.11.0
   flutter_sticky_header:
-  hooks_riverpod: ^0.6.1
+  hooks_riverpod:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

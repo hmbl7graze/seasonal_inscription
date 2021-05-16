@@ -3,8 +3,9 @@ import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'poetic_name_data.dart';
+import 'providers.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(ProviderScope(child: MyApp()));
 
 class MyApp extends StatelessWidget {
   @override
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
               sliver: SliverList(
                 delegate: SliverChildBuilderDelegate(
                       (BuildContext context, int index) {
-                    return const ExpansionStatefulWidget();
+                        return _MonthlyExpansionPanelList(Month.january);
                   },
                   childCount: 1,//ここでデータの数を取得していれる
                   semanticIndexOffset: 2,
@@ -52,7 +53,7 @@ class MyApp extends StatelessWidget {
               sliver: SliverList(
                 delegate: SliverChildBuilderDelegate(
                       (BuildContext context, int index) {
-                    return const ExpansionStatefulWidget();
+                        return _MonthlyExpansionPanelList(Month.february);
                   },
                   childCount: 1,//ここでデータの数を取得していれる
                   semanticIndexOffset: 2,
@@ -73,7 +74,7 @@ class MyApp extends StatelessWidget {
               sliver: SliverList(
                 delegate: SliverChildBuilderDelegate(
                       (BuildContext context, int index) {
-                    return const ExpansionStatefulWidget();
+                        return _MonthlyExpansionPanelList(Month.march);
                   },
                   childCount: 1,//ここでデータの数を取得していれる
                   semanticIndexOffset: 2,
@@ -87,56 +88,67 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// stores ExpansionPanel state information
-class Item {
-  Item({
-    this.data,
-    this.isExpanded = false,
-  });
-
-  Data data;
-  bool isExpanded;
-}
-
-List<Item> generateItems(int month) {
-  final monthlyDataList
-   = dataList.where((Data data) => data.month == month).toList();
-  return List<Item>.generate(monthlyDataList.length, (int index) {
-    return Item(
-      data: monthlyDataList[index],
-    );
-  });
-}
-
-class ExpansionStatefulWidget extends StatefulWidget {
-  const ExpansionStatefulWidget({Key key, this.month}) : super(key: key);
-  final int month;
-
-  @override
-  _ExpansionStatefulWidgetState createState()
-   => _ExpansionStatefulWidgetState();
-}
-
-class _ExpansionStatefulWidgetState extends State<ExpansionStatefulWidget> {
-  final List<Item> _data = generateItems(1);
+class _MonthlyExpansionPanelList extends HookWidget {
+  _MonthlyExpansionPanelList(this.month){
+    switch(month) {
+      case Month.january:
+        monthlyItemListState = januaryListProvider;
+        break;
+      case Month.february:
+        monthlyItemListState = februaryListProvider;
+        break;
+      case Month.march:
+        monthlyItemListState = marchListProvider;
+        break;
+      case Month.april:
+      // TODO: Handle this case.
+        break;
+      case Month.may:
+      // TODO: Handle this case.
+        break;
+      case Month.june:
+      // TODO: Handle this case.
+        break;
+      case Month.july:
+      // TODO: Handle this case.
+        break;
+      case Month.august:
+      // TODO: Handle this case.
+        break;
+      case Month.september:
+      // TODO: Handle this case.
+        break;
+      case Month.october:
+      // TODO: Handle this case.
+        break;
+      case Month.november:
+      // TODO: Handle this case.
+        break;
+      case Month.december:
+      // TODO: Handle this case.
+        break;
+      case Month.allSeason:
+      // TODO: Handle this case.
+        break;
+    }
+  }
+  Month month;
+  StateNotifierProvider<MonthlyItemListState> monthlyItemListState;
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        child: _buildPanel(),
-      ),
-    );
-  }
-
-  Widget _buildPanel() {
+    final tempProvider = useProvider(monthlyItemListState);
     return ExpansionPanelList(
       expansionCallback: (int index, bool isExpanded) {
-        setState(() {
-          _data[index].isExpanded = !isExpanded;
-        });
+        if(!isExpanded){
+          tempProvider.expandPanel(index);
+        }
+        else{
+          tempProvider.closePanel(index);
+        }
       },
-      children: _data.map<ExpansionPanel>((Item item) {
+      children: useProvider(monthlyItemListState.state)
+                  .map<ExpansionPanel>((Item item) {
         return ExpansionPanel(
           canTapOnHeader: true,
           headerBuilder: (BuildContext context, bool isExpanded) {
@@ -145,7 +157,7 @@ class _ExpansionStatefulWidgetState extends State<ExpansionStatefulWidget> {
             );
           },
           body: ListTile(
-              title: Text(item.data.detail),
+            title: Text(item.data.detail),
           ),
           isExpanded: item.isExpanded,
         );
