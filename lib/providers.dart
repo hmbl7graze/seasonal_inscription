@@ -47,3 +47,39 @@ StateNotifierProvider((ref) =>
 final marchListProvider =
 StateNotifierProvider((ref) =>
     MonthlyItemListState(generateItems(Month.march)));
+
+final aprilListProvider =
+StateNotifierProvider((ref) =>
+    MonthlyItemListState(generateItems(Month.april)));
+
+final mayListProvider =
+StateNotifierProvider((ref) =>
+    MonthlyItemListState(generateItems(Month.may)));
+
+final juneListProvider =
+StateNotifierProvider((ref) =>
+    MonthlyItemListState(generateItems(Month.june)));
+
+final julyListProvider =
+StateNotifierProvider((ref) =>
+    MonthlyItemListState(generateItems(Month.july)));
+
+final augustListProvider =
+StateNotifierProvider((ref) =>
+    MonthlyItemListState(generateItems(Month.august)));
+
+final septemberListProvider =
+StateNotifierProvider((ref) =>
+    MonthlyItemListState(generateItems(Month.september)));
+
+final octoberListProvider =
+StateNotifierProvider((ref) =>
+    MonthlyItemListState(generateItems(Month.october)));
+
+final novemberListProvider =
+StateNotifierProvider((ref) =>
+    MonthlyItemListState(generateItems(Month.november)));
+
+final decemberListProvider =
+StateNotifierProvider((ref) =>
+    MonthlyItemListState(generateItems(Month.december)));
