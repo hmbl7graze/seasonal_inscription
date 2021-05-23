@@ -277,9 +277,9 @@ class MyApp extends StatelessWidget {
 }
 
 class _MonthlyExpansionPanelList extends HookWidget {
-  _MonthlyExpansionPanelList(this.monthlyItemListState);
+  const _MonthlyExpansionPanelList(this.monthlyItemListState);
 
-  StateNotifierProvider<MonthlyItemListState> monthlyItemListState;
+  final StateNotifierProvider<MonthlyItemListState> monthlyItemListState;
 
   @override
   Widget build(BuildContext context) {
