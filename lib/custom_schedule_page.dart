@@ -90,8 +90,8 @@ class CustomSchedulePage extends HookWidget {
                 width: 200,
                 child: RadioListTile(
                   controlAffinity: ListTileControlAffinity.leading,
-                  title: const Text('毎週月曜日'),
-                  value: 1,
+                  title: const Text('毎週火曜日'),
+                  value: 2,
                   groupValue: useProvider(weekdayProvider).state,
                   onChanged: (int value) => {
                     context.read(weekdayProvider).state = value
@@ -102,8 +102,8 @@ class CustomSchedulePage extends HookWidget {
                 width: 200,
                 child: RadioListTile(
                   controlAffinity: ListTileControlAffinity.leading,
-                  title: const Text('毎週月曜日'),
-                  value: 1,
+                  title: const Text('毎週水曜日'),
+                  value: 3,
                   groupValue: useProvider(weekdayProvider).state,
                   onChanged: (int value) => {
                     context.read(weekdayProvider).state = value
@@ -114,8 +114,8 @@ class CustomSchedulePage extends HookWidget {
                 width: 200,
                 child: RadioListTile(
                   controlAffinity: ListTileControlAffinity.leading,
-                  title: const Text('毎週月曜日'),
-                  value: 1,
+                  title: const Text('毎週木曜日'),
+                  value: 4,
                   groupValue: useProvider(weekdayProvider).state,
                   onChanged: (int value) => {
                     context.read(weekdayProvider).state = value
@@ -126,8 +126,8 @@ class CustomSchedulePage extends HookWidget {
                 width: 200,
                 child: RadioListTile(
                   controlAffinity: ListTileControlAffinity.leading,
-                  title: const Text('毎週月曜日'),
-                  value: 1,
+                  title: const Text('毎週金曜日'),
+                  value: 5,
                   groupValue: useProvider(weekdayProvider).state,
                   onChanged: (int value) => {
                     context.read(weekdayProvider).state = value
@@ -138,8 +138,8 @@ class CustomSchedulePage extends HookWidget {
                 width: 200,
                 child: RadioListTile(
                   controlAffinity: ListTileControlAffinity.leading,
-                  title: const Text('毎週月曜日'),
-                  value: 1,
+                  title: const Text('毎週土曜日'),
+                  value: 6,
                   groupValue: useProvider(weekdayProvider).state,
                   onChanged: (int value) => {
                     context.read(weekdayProvider).state = value
@@ -150,8 +150,8 @@ class CustomSchedulePage extends HookWidget {
                 width: 200,
                 child: RadioListTile(
                   controlAffinity: ListTileControlAffinity.leading,
-                  title: const Text('毎週月曜日'),
-                  value: 1,
+                  title: const Text('毎週日曜日'),
+                  value: 7,
                   groupValue: useProvider(weekdayProvider).state,
                   onChanged: (int value) => {
                     context.read(weekdayProvider).state = value
