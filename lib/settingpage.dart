@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'custom_schedule_page.dart';
 
 class SettingPage extends StatelessWidget {
   @override
@@ -9,7 +10,7 @@ class SettingPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: Container(
-        padding: EdgeInsets.all(32.0),
+        padding: const EdgeInsets.all(32),
         child: Center(
           child: Column(
             children: <Widget>[
@@ -26,7 +27,13 @@ class SettingPage extends StatelessWidget {
                   )
               ),
               FloatingActionButton(
-                onPressed: () {},
+                onPressed: () =>  Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (context) => CustomSchedulePage(),
+                    fullscreenDialog: true,
+                  ),
+                ),
                 child: const Icon(Icons.add),
               )
             ],

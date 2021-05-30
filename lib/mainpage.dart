@@ -30,7 +30,7 @@ class MainPage extends StatelessWidget{
           SliverStickyHeader(
             header: Container(
               height: 60,
-              color: Colors.lightBlue,
+              color: Colors.lightGreen,
               padding: const EdgeInsets.symmetric(horizontal: 16),
               alignment: Alignment.centerLeft,
               child: const Text(
@@ -51,7 +51,7 @@ class MainPage extends StatelessWidget{
           SliverStickyHeader(
             header: Container(
               height: 60,
-              color: Colors.lightBlue,
+              color: Colors.lightGreen,
               padding: const EdgeInsets.symmetric(horizontal: 16),
               alignment: Alignment.centerLeft,
               child: const Text(
@@ -72,7 +72,7 @@ class MainPage extends StatelessWidget{
           SliverStickyHeader(
             header: Container(
               height: 60,
-              color: Colors.lightBlue,
+              color: Colors.lightGreen,
               padding: const EdgeInsets.symmetric(horizontal: 16),
               alignment: Alignment.centerLeft,
               child: const Text(
@@ -93,7 +93,7 @@ class MainPage extends StatelessWidget{
           SliverStickyHeader(
             header: Container(
               height: 60,
-              color: Colors.lightBlue,
+              color: Colors.lightGreen,
               padding: const EdgeInsets.symmetric(horizontal: 16),
               alignment: Alignment.centerLeft,
               child: const Text(
@@ -114,7 +114,7 @@ class MainPage extends StatelessWidget{
           SliverStickyHeader(
             header: Container(
               height: 60,
-              color: Colors.lightBlue,
+              color: Colors.lightGreen,
               padding: const EdgeInsets.symmetric(horizontal: 16),
               alignment: Alignment.centerLeft,
               child: const Text(
@@ -135,7 +135,7 @@ class MainPage extends StatelessWidget{
           SliverStickyHeader(
             header: Container(
               height: 60,
-              color: Colors.lightBlue,
+              color: Colors.lightGreen,
               padding: const EdgeInsets.symmetric(horizontal: 16),
               alignment: Alignment.centerLeft,
               child: const Text(
@@ -156,7 +156,7 @@ class MainPage extends StatelessWidget{
           SliverStickyHeader(
             header: Container(
               height: 60,
-              color: Colors.lightBlue,
+              color: Colors.lightGreen,
               padding: const EdgeInsets.symmetric(horizontal: 16),
               alignment: Alignment.centerLeft,
               child: const Text(
@@ -177,7 +177,7 @@ class MainPage extends StatelessWidget{
           SliverStickyHeader(
             header: Container(
               height: 60,
-              color: Colors.lightBlue,
+              color: Colors.lightGreen,
               padding: const EdgeInsets.symmetric(horizontal: 16),
               alignment: Alignment.centerLeft,
               child: const Text(
@@ -198,7 +198,7 @@ class MainPage extends StatelessWidget{
           SliverStickyHeader(
             header: Container(
               height: 60,
-              color: Colors.lightBlue,
+              color: Colors.lightGreen,
               padding: const EdgeInsets.symmetric(horizontal: 16),
               alignment: Alignment.centerLeft,
               child: const Text(
@@ -219,7 +219,7 @@ class MainPage extends StatelessWidget{
           SliverStickyHeader(
             header: Container(
               height: 60,
-              color: Colors.lightBlue,
+              color: Colors.lightGreen,
               padding: const EdgeInsets.symmetric(horizontal: 16),
               alignment: Alignment.centerLeft,
               child: const Text(
@@ -240,7 +240,7 @@ class MainPage extends StatelessWidget{
           SliverStickyHeader(
             header: Container(
               height: 60,
-              color: Colors.lightBlue,
+              color: Colors.lightGreen,
               padding: const EdgeInsets.symmetric(horizontal: 16),
               alignment: Alignment.centerLeft,
               child: const Text(
@@ -261,7 +261,7 @@ class MainPage extends StatelessWidget{
           SliverStickyHeader(
             header: Container(
               height: 60,
-              color: Colors.lightBlue,
+              color: Colors.lightGreen,
               padding: const EdgeInsets.symmetric(horizontal: 16),
               alignment: Alignment.centerLeft,
               child: const Text(
