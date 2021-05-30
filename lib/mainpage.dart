@@ -35,7 +35,7 @@ class MainPage extends StatelessWidget{
               alignment: Alignment.centerLeft,
               child: const Text(
                 '1月',
-                style: const TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white),
               ),
             ),
             sliver: SliverList(
@@ -56,7 +56,7 @@ class MainPage extends StatelessWidget{
               alignment: Alignment.centerLeft,
               child: const Text(
                 '2月',
-                style: const TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white),
               ),
             ),
             sliver: SliverList(
@@ -77,7 +77,7 @@ class MainPage extends StatelessWidget{
               alignment: Alignment.centerLeft,
               child: const Text(
                 '3月',
-                style: const TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white),
               ),
             ),
             sliver: SliverList(
@@ -98,7 +98,7 @@ class MainPage extends StatelessWidget{
               alignment: Alignment.centerLeft,
               child: const Text(
                 '4月',
-                style: const TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white),
               ),
             ),
             sliver: SliverList(
@@ -119,7 +119,7 @@ class MainPage extends StatelessWidget{
               alignment: Alignment.centerLeft,
               child: const Text(
                 '5月',
-                style: const TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white),
               ),
             ),
             sliver: SliverList(
@@ -140,7 +140,7 @@ class MainPage extends StatelessWidget{
               alignment: Alignment.centerLeft,
               child: const Text(
                 '6月',
-                style: const TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white),
               ),
             ),
             sliver: SliverList(
@@ -161,7 +161,7 @@ class MainPage extends StatelessWidget{
               alignment: Alignment.centerLeft,
               child: const Text(
                 '7月',
-                style: const TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white),
               ),
             ),
             sliver: SliverList(
@@ -182,7 +182,7 @@ class MainPage extends StatelessWidget{
               alignment: Alignment.centerLeft,
               child: const Text(
                 '8月',
-                style: const TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white),
               ),
             ),
             sliver: SliverList(
@@ -203,7 +203,7 @@ class MainPage extends StatelessWidget{
               alignment: Alignment.centerLeft,
               child: const Text(
                 '9月',
-                style: const TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white),
               ),
             ),
             sliver: SliverList(
@@ -224,7 +224,7 @@ class MainPage extends StatelessWidget{
               alignment: Alignment.centerLeft,
               child: const Text(
                 '10月',
-                style: const TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white),
               ),
             ),
             sliver: SliverList(
@@ -245,7 +245,7 @@ class MainPage extends StatelessWidget{
               alignment: Alignment.centerLeft,
               child: const Text(
                 '11月',
-                style: const TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white),
               ),
             ),
             sliver: SliverList(
@@ -266,7 +266,7 @@ class MainPage extends StatelessWidget{
               alignment: Alignment.centerLeft,
               child: const Text(
                 '12月',
-                style: const TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white),
               ),
             ),
             sliver: SliverList(
@@ -288,21 +288,21 @@ class MainPage extends StatelessWidget{
 class _MonthlyExpansionPanelList extends HookWidget {
   const _MonthlyExpansionPanelList(this.monthlyItemListState);
 
-  final StateNotifierProvider<MonthlyItemListState> monthlyItemListState;
+  final StateNotifierProvider<MonthlyItemListState, List<Item>>
+    monthlyItemListState;
 
   @override
   Widget build(BuildContext context) {
-    final tempProvider = useProvider(monthlyItemListState);
     return ExpansionPanelList(
       expansionCallback: (int index, bool isExpanded) {
         if(!isExpanded){
-          tempProvider.expandPanel(index);
+          context.read(monthlyItemListState.notifier).expandPanel(index);
         }
         else{
-          tempProvider.closePanel(index);
+          context.read(monthlyItemListState.notifier).closePanel(index);
         }
       },
-      children: useProvider(monthlyItemListState.state)
+      children: useProvider(monthlyItemListState)
           .map<ExpansionPanel>((Item item) {
         return ExpansionPanel(
           canTapOnHeader: true,

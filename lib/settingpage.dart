@@ -15,13 +15,13 @@ class SettingPage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               const Card(
-                child: const ListTile(
+                child: ListTile(
                   title: Text('毎週月曜日　18時'),
                   trailing: Icon(Icons.delete),
                 )
               ),
               const Card(
-                  child: const ListTile(
+                  child: ListTile(
                     title: Text('毎週水曜日　17時'),
                     trailing: Icon(Icons.delete),
                   )

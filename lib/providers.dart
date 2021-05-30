@@ -37,49 +37,49 @@ List<Item> generateItems(Month month) {
 }
 
 final januaryListProvider =
-StateNotifierProvider((ref) =>
-    MonthlyItemListState(generateItems(Month.january)));
+StateNotifierProvider<MonthlyItemListState, List<Item>>
+  ((ref) => MonthlyItemListState(generateItems(Month.january)));
 
 final februaryListProvider =
-StateNotifierProvider((ref) =>
-    MonthlyItemListState(generateItems(Month.february)));
+StateNotifierProvider<MonthlyItemListState, List<Item>>
+  ((ref) => MonthlyItemListState(generateItems(Month.february)));
 
 final marchListProvider =
-StateNotifierProvider((ref) =>
-    MonthlyItemListState(generateItems(Month.march)));
+StateNotifierProvider<MonthlyItemListState, List<Item>>
+  ((ref) => MonthlyItemListState(generateItems(Month.march)));
 
 final aprilListProvider =
-StateNotifierProvider((ref) =>
-    MonthlyItemListState(generateItems(Month.april)));
+StateNotifierProvider<MonthlyItemListState, List<Item>>
+  ((ref) => MonthlyItemListState(generateItems(Month.april)));
 
 final mayListProvider =
-StateNotifierProvider((ref) =>
-    MonthlyItemListState(generateItems(Month.may)));
+StateNotifierProvider<MonthlyItemListState, List<Item>>
+  ((ref) => MonthlyItemListState(generateItems(Month.may)));
 
 final juneListProvider =
-StateNotifierProvider((ref) =>
-    MonthlyItemListState(generateItems(Month.june)));
+StateNotifierProvider<MonthlyItemListState, List<Item>>
+  ((ref) => MonthlyItemListState(generateItems(Month.june)));
 
 final julyListProvider =
-StateNotifierProvider((ref) =>
-    MonthlyItemListState(generateItems(Month.july)));
+StateNotifierProvider<MonthlyItemListState, List<Item>>
+  ((ref) => MonthlyItemListState(generateItems(Month.july)));
 
 final augustListProvider =
-StateNotifierProvider((ref) =>
-    MonthlyItemListState(generateItems(Month.august)));
+StateNotifierProvider<MonthlyItemListState, List<Item>>
+  ((ref) => MonthlyItemListState(generateItems(Month.august)));
 
 final septemberListProvider =
-StateNotifierProvider((ref) =>
-    MonthlyItemListState(generateItems(Month.september)));
+StateNotifierProvider<MonthlyItemListState, List<Item>>
+  ((ref) => MonthlyItemListState(generateItems(Month.september)));
 
 final octoberListProvider =
-StateNotifierProvider((ref) =>
-    MonthlyItemListState(generateItems(Month.october)));
+StateNotifierProvider<MonthlyItemListState, List<Item>>
+  ((ref) => MonthlyItemListState(generateItems(Month.october)));
 
 final novemberListProvider =
-StateNotifierProvider((ref) =>
-    MonthlyItemListState(generateItems(Month.november)));
+StateNotifierProvider<MonthlyItemListState, List<Item>>
+  ((ref) => MonthlyItemListState(generateItems(Month.november)));
 
 final decemberListProvider =
-StateNotifierProvider((ref) =>
-    MonthlyItemListState(generateItems(Month.december)));
+StateNotifierProvider<MonthlyItemListState, List<Item>>
+  ((ref) => MonthlyItemListState(generateItems(Month.december)));
