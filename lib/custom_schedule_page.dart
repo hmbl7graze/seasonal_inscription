@@ -1,6 +1,8 @@
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:sprintf/sprintf.dart';
+import 'hive_service.dart';
 
 class CustomSchedulePage extends HookWidget {
   @override
@@ -11,7 +13,14 @@ class CustomSchedulePage extends HookWidget {
         centerTitle: true,
         actions: <Widget>[
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () async {
+              await saveNewSchedule(
+                  context.read(weekdayProvider).state,
+                  context.read(hourProvider).state,
+                  context.read(minuteProvider).state
+              );
+              Navigator.pop(context);
+            },
             child: const FittedBox(
               fit: BoxFit.fitWidth,
               child: Text(
@@ -41,12 +50,21 @@ class CustomSchedulePage extends HookWidget {
                       padding: const EdgeInsets.all(20),
                       child: ElevatedButton(
                         onPressed: ()async {
+                          final hour = context.read(hourProvider).state;
+                          final minute = context.read(minuteProvider).state;
                           final t = await showTimePicker(
                             context: context,
-                            initialTime: TimeOfDay.now(),
+                            initialTime: TimeOfDay(
+                              hour: hour,
+                              minute: minute,
+                            ),
                           );
                           if(t != null){
-                            context.read(dateTimeProvider).state = t.toString();
+                            context.read(hourProvider).state = t.hour;
+                            context.read(minuteProvider).state = t.minute;
+                            context.read(dateTimeProvider).state = sprintf(
+                              '%02i:%02i',[t.hour, t.minute]
+                            );
                           }
                         },
                         child: Text(useProvider(dateTimeProvider).state,
@@ -170,3 +188,6 @@ class CustomSchedulePage extends HookWidget {
 final weekdayProvider = StateProvider((ref) => 1);
 
 final dateTimeProvider = StateProvider((ref) => '12:00');
+
+final hourProvider = StateProvider((ref) => 12);
+final minuteProvider = StateProvider((ref) => 0);
