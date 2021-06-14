@@ -1,13 +1,29 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_sticky_header/flutter_sticky_header.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_sticky_header/flutter_sticky_header.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:seasonal_inscription/poetic_name_data.dart';
+
 import 'providers.dart';
 import 'settingpage.dart';
 
-class MainPage extends StatelessWidget{
+class MainPage extends HookWidget{
+  final BannerAd januaryBanner = _createMonthlyBannerAd(Month.january);
+
   @override
   Widget build(BuildContext context){
+    januaryBanner.load();
+
+    final adWidget = AdWidget(ad: januaryBanner);
+    final adContainer = Container(
+      alignment: Alignment.center,
+      width: januaryBanner.size.width.toDouble(),
+      height: januaryBanner.size.height.toDouble(),
+      child: adWidget,
+    );
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
@@ -26,6 +42,9 @@ class MainPage extends StatelessWidget{
                 ),
               ),
             ),
+          ),
+          SliverStickyHeader(
+            header: adContainer,
           ),
           SliverStickyHeader(
             header: Container(
@@ -319,4 +338,68 @@ class _MonthlyExpansionPanelList extends HookWidget {
       }).toList(),
     );
   }
+}
+
+BannerAd _createMonthlyBannerAd(Month month){
+  final adUnitId = _getAdUnitId(month);
+  return BannerAd(
+    adUnitId: adUnitId,
+    size: AdSize.fullBanner,
+    request: const AdRequest(),
+    listener: const BannerAdListener(),
+  );
+}
+
+String _getAdUnitId(Month month){
+  switch(month){
+    case Month.january:
+      return Platform.isAndroid
+          ? 'ca-app-pub-3940256099942544/6300978111'
+          : 'ca-app-pub-3940256099942544/2934735716';
+    case Month.february:
+      return Platform.isAndroid
+          ? 'ca-app-pub-3940256099942544/6300978111'
+          : 'ca-app-pub-3940256099942544/2934735716';
+    case Month.march:
+      return Platform.isAndroid
+          ? 'ca-app-pub-3940256099942544/6300978111'
+          : 'ca-app-pub-3940256099942544/2934735716';
+    case Month.april:
+      return Platform.isAndroid
+          ? 'ca-app-pub-3940256099942544/6300978111'
+          : 'ca-app-pub-3940256099942544/2934735716';
+    case Month.may:
+      return Platform.isAndroid
+          ? 'ca-app-pub-3940256099942544/6300978111'
+          : 'ca-app-pub-3940256099942544/2934735716';
+    case Month.june:
+      return Platform.isAndroid
+          ? 'ca-app-pub-3940256099942544/6300978111'
+          : 'ca-app-pub-3940256099942544/2934735716';
+    case Month.july:
+      return Platform.isAndroid
+          ? 'ca-app-pub-3940256099942544/6300978111'
+          : 'ca-app-pub-3940256099942544/2934735716';
+    case Month.august:
+      return Platform.isAndroid
+          ? 'ca-app-pub-3940256099942544/6300978111'
+          : 'ca-app-pub-3940256099942544/2934735716';
+    case Month.september:
+      return Platform.isAndroid
+          ? 'ca-app-pub-3940256099942544/6300978111'
+          : 'ca-app-pub-3940256099942544/2934735716';
+    case Month.october:
+      return Platform.isAndroid
+          ? 'ca-app-pub-3940256099942544/6300978111'
+          : 'ca-app-pub-3940256099942544/2934735716';
+    case Month.november:
+      return Platform.isAndroid
+          ? 'ca-app-pub-3940256099942544/6300978111'
+          : 'ca-app-pub-3940256099942544/2934735716';
+    case Month.december:
+      return Platform.isAndroid
+          ? 'ca-app-pub-3940256099942544/6300978111'
+          : 'ca-app-pub-3940256099942544/2934735716';
+  }
+  return'';
 }

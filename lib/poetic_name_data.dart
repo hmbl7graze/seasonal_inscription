@@ -11,7 +11,6 @@ enum Month{
   october,
   november,
   december,
-  allSeason,
 }
 
 
