@@ -178,6 +178,7 @@ class _MonthlyExpansionPanelList extends HookWidget {
           headerBuilder: (BuildContext context, bool isExpanded) {
             return ListTile(
               title: Text(item.data.name),
+              subtitle: Text(item.data.reading),
             );
           },
           body: ListTile(
