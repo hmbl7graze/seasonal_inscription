@@ -46,262 +46,112 @@ class MainPage extends HookWidget{
           SliverStickyHeader(
             header: adContainer,
           ),
-          SliverStickyHeader(
-            header: Container(
-              height: 60,
-              color: Colors.lightGreen,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              alignment: Alignment.centerLeft,
-              child: const Text(
-                '1月',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                  return _MonthlyExpansionPanelList(januaryListProvider);
-                },
-                childCount: 1,//ここでデータの数を取得していれる
-                semanticIndexOffset: 2,
-              ),
-            ),
-          ),
-          SliverStickyHeader(
-            header: Container(
-              height: 60,
-              color: Colors.lightGreen,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              alignment: Alignment.centerLeft,
-              child: const Text(
-                '2月',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                  return _MonthlyExpansionPanelList(februaryListProvider);
-                },
-                childCount: 1,//ここでデータの数を取得していれる
-                semanticIndexOffset: 2,
-              ),
-            ),
-          ),
-          SliverStickyHeader(
-            header: Container(
-              height: 60,
-              color: Colors.lightGreen,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              alignment: Alignment.centerLeft,
-              child: const Text(
-                '3月',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                  return _MonthlyExpansionPanelList(marchListProvider);
-                },
-                childCount: 1,//ここでデータの数を取得していれる
-                semanticIndexOffset: 2,
-              ),
-            ),
-          ),
-          SliverStickyHeader(
-            header: Container(
-              height: 60,
-              color: Colors.lightGreen,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              alignment: Alignment.centerLeft,
-              child: const Text(
-                '4月',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                  return _MonthlyExpansionPanelList(aprilListProvider);
-                },
-                childCount: 1,//ここでデータの数を取得していれる
-                semanticIndexOffset: 2,
-              ),
-            ),
-          ),
-          SliverStickyHeader(
-            header: Container(
-              height: 60,
-              color: Colors.lightGreen,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              alignment: Alignment.centerLeft,
-              child: const Text(
-                '5月',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                  return _MonthlyExpansionPanelList(mayListProvider);
-                },
-                childCount: 1,//ここでデータの数を取得していれる
-                semanticIndexOffset: 2,
-              ),
-            ),
-          ),
-          SliverStickyHeader(
-            header: Container(
-              height: 60,
-              color: Colors.lightGreen,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              alignment: Alignment.centerLeft,
-              child: const Text(
-                '6月',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                  return _MonthlyExpansionPanelList(juneListProvider);
-                },
-                childCount: 1,//ここでデータの数を取得していれる
-                semanticIndexOffset: 2,
-              ),
-            ),
-          ),
-          SliverStickyHeader(
-            header: Container(
-              height: 60,
-              color: Colors.lightGreen,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              alignment: Alignment.centerLeft,
-              child: const Text(
-                '7月',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                  return _MonthlyExpansionPanelList(julyListProvider);
-                },
-                childCount: 1,//ここでデータの数を取得していれる
-                semanticIndexOffset: 2,
-              ),
-            ),
-          ),
-          SliverStickyHeader(
-            header: Container(
-              height: 60,
-              color: Colors.lightGreen,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              alignment: Alignment.centerLeft,
-              child: const Text(
-                '8月',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                  return _MonthlyExpansionPanelList(augustListProvider);
-                },
-                childCount: 1,//ここでデータの数を取得していれる
-                semanticIndexOffset: 2,
-              ),
-            ),
-          ),
-          SliverStickyHeader(
-            header: Container(
-              height: 60,
-              color: Colors.lightGreen,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              alignment: Alignment.centerLeft,
-              child: const Text(
-                '9月',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                  return _MonthlyExpansionPanelList(septemberListProvider);
-                },
-                childCount: 1,//ここでデータの数を取得していれる
-                semanticIndexOffset: 2,
-              ),
-            ),
-          ),
-          SliverStickyHeader(
-            header: Container(
-              height: 60,
-              color: Colors.lightGreen,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              alignment: Alignment.centerLeft,
-              child: const Text(
-                '10月',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                  return _MonthlyExpansionPanelList(octoberListProvider);
-                },
-                childCount: 1,//ここでデータの数を取得していれる
-                semanticIndexOffset: 2,
-              ),
-            ),
-          ),
-          SliverStickyHeader(
-            header: Container(
-              height: 60,
-              color: Colors.lightGreen,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              alignment: Alignment.centerLeft,
-              child: const Text(
-                '11月',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                  return _MonthlyExpansionPanelList(novemberListProvider);
-                },
-                childCount: 1,//ここでデータの数を取得していれる
-                semanticIndexOffset: 2,
-              ),
-            ),
-          ),
-          SliverStickyHeader(
-            header: Container(
-              height: 60,
-              color: Colors.lightGreen,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              alignment: Alignment.centerLeft,
-              child: const Text(
-                '12月',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                  return _MonthlyExpansionPanelList(decemberListProvider);
-                },
-                childCount: 1,//ここでデータの数を取得していれる
-                semanticIndexOffset: 2,
-              ),
-            ),
-          ),
+          createMonthlySliverStickyHeader(context, Month.january),
+          createMonthlySliverStickyHeader(context, Month.february),
+          createMonthlySliverStickyHeader(context, Month.march),
+          createMonthlySliverStickyHeader(context, Month.april),
+          createMonthlySliverStickyHeader(context, Month.may),
+          createMonthlySliverStickyHeader(context, Month.june),
+          createMonthlySliverStickyHeader(context, Month.july),
+          createMonthlySliverStickyHeader(context, Month.august),
+          createMonthlySliverStickyHeader(context, Month.september),
+          createMonthlySliverStickyHeader(context, Month.october),
+          createMonthlySliverStickyHeader(context, Month.november),
+          createMonthlySliverStickyHeader(context, Month.december),
         ],
       ),
     );
   }
+}
+
+SliverStickyHeader createMonthlySliverStickyHeader(
+    BuildContext context,
+    Month month
+    ){
+  String monthString;
+  Widget monthlyExpansionPanelList;
+  switch(month){
+    case Month.january:
+      monthString = '1月';
+      monthlyExpansionPanelList =
+          _MonthlyExpansionPanelList(januaryListProvider);
+      break;
+    case Month.february:
+      monthString = '2月';
+      monthlyExpansionPanelList =
+          _MonthlyExpansionPanelList(februaryListProvider);
+      break;
+    case Month.march:
+      monthString = '3月';
+      monthlyExpansionPanelList =
+          _MonthlyExpansionPanelList(marchListProvider);
+      break;
+    case Month.april:
+      monthString = '4月';
+      monthlyExpansionPanelList =
+          _MonthlyExpansionPanelList(aprilListProvider);
+      break;
+    case Month.may:
+      monthString = '5月';
+      monthlyExpansionPanelList =
+          _MonthlyExpansionPanelList(mayListProvider);
+      break;
+    case Month.june:
+      monthString = '6月';
+      monthlyExpansionPanelList =
+          _MonthlyExpansionPanelList(juneListProvider);
+      break;
+    case Month.july:
+      monthString = '7月';
+      monthlyExpansionPanelList =
+          _MonthlyExpansionPanelList(julyListProvider);
+      break;
+    case Month.august:
+      monthString = '8月';
+      monthlyExpansionPanelList =
+          _MonthlyExpansionPanelList(augustListProvider);
+      break;
+    case Month.september:
+      monthString = '9月';
+      monthlyExpansionPanelList =
+          _MonthlyExpansionPanelList(septemberListProvider);
+      break;
+    case Month.october:
+      monthString = '10月';
+      monthlyExpansionPanelList =
+          _MonthlyExpansionPanelList(octoberListProvider);
+      break;
+    case Month.november:
+      monthString = '11月';
+      monthlyExpansionPanelList =
+          _MonthlyExpansionPanelList(novemberListProvider);
+      break;
+    case Month.december:
+      monthString = '12月';
+      monthlyExpansionPanelList =
+          _MonthlyExpansionPanelList(decemberListProvider);
+      break;
+  }
+  return SliverStickyHeader(
+    header: Container(
+      height: 60,
+      color: Colors.lightGreen,
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      alignment: Alignment.centerLeft,
+      child: Text(
+        monthString,
+      ),
+    ),
+    sliver: SliverList(
+      delegate: SliverChildBuilderDelegate(
+            (BuildContext context, int index) {
+          return monthlyExpansionPanelList;
+        },
+        childCount: 1,
+        semanticIndexOffset: 2,
+      ),
+    ),
+  );
 }
 
 class _MonthlyExpansionPanelList extends HookWidget {
