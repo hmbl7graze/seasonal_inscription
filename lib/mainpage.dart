@@ -7,9 +7,9 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:seasonal_inscription/poetic_name_data.dart';
 
+import 'custom_expansionpane_llist.dart';
 import 'providers.dart';
 import 'settingpage.dart';
-import 'custom_expansionpane_llist.dart';
 
 class MainPage extends HookWidget{
   final BannerAd januaryBanner = _createMonthlyBannerAd(Month.january);
@@ -26,23 +26,55 @@ class MainPage extends HookWidget{
       child: adWidget,
     );
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            ListTile(
+              title: const Text('通知設定'),
+              leading: const Icon(Icons.add_alarm),
+              trailing: const Icon(Icons.arrow_forward),
+              onTap: () =>  Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                    builder: (context) => SettingPage()
+                ),
+              ),
+            ),
+            ListTile(
+              title: const Text('今日の御銘'),
+              leading: const Icon(Icons.wb_twighlight),
+              trailing: const Icon(Icons.arrow_forward),
+            ),
+            ListTile(
+              title: const Text('アプリ内購入'),
+              leading: const Icon(Icons.shopping_cart_outlined),
+              trailing: const Icon(Icons.arrow_forward),
+            ),
+            ListTile(
+              title: const Text('アプリ情報'),
+              leading: const Icon(Icons.info_outline),
+              trailing: const Icon(Icons.arrow_forward),
+            )
+          ]
+        )
+      ),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
             floating: true,
             title: const Text('今日の御銘'),
-            leading: PreferredSize(
-              preferredSize: const Size.fromHeight(0),
-              child: IconButton(
-                icon: const Icon(Icons.add_alarm),
-                onPressed: () =>  Navigator.push(
-                  context,
-                  MaterialPageRoute<void>(
-                      builder: (context) => SettingPage()
-                  ),
-                ),
-              ),
-            ),
+            //leading: PreferredSize(
+            //  preferredSize: const Size.fromHeight(0),
+            //  child: IconButton(
+            //    icon: const Icon(Icons.add_alarm),
+            //    onPressed: () =>  Navigator.push(
+            //      context,
+            //      MaterialPageRoute<void>(
+            //          builder: (context) => SettingPage()
+            //      ),
+            //    ),
+            //  ),
+            //),
           ),
           SliverStickyHeader(
             header: adContainer,
