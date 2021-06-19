@@ -9,6 +9,7 @@ import 'package:seasonal_inscription/poetic_name_data.dart';
 
 import 'providers.dart';
 import 'settingpage.dart';
+import 'custom_expansionpane_llist.dart';
 
 class MainPage extends HookWidget{
   final BannerAd januaryBanner = _createMonthlyBannerAd(Month.january);
@@ -162,7 +163,7 @@ class _MonthlyExpansionPanelList extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ExpansionPanelList(
+    return CustomExpansionPanelList(
       expansionCallback: (int index, bool isExpanded) {
         if(!isExpanded){
           context.read(monthlyItemListState.notifier).expandPanel(index);
