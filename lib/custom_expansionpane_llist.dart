@@ -263,7 +263,7 @@ class _ExpansionPanelListState extends State<CustomExpansionPanelList> {
       }
       double _radiusValue;
       if (_isChildExpanded(index)) {
-        _radiusValue = 20.0;
+        _radiusValue = 20.0;  // 丸さの指定
       } else {
         _radiusValue = 0.0;
       }
