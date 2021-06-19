@@ -60,21 +60,9 @@ class MainPage extends HookWidget{
       ),
       body: CustomScrollView(
         slivers: <Widget>[
-          SliverAppBar(
+          const SliverAppBar(
             floating: true,
-            title: const Text('今日の御銘'),
-            //leading: PreferredSize(
-            //  preferredSize: const Size.fromHeight(0),
-            //  child: IconButton(
-            //    icon: const Icon(Icons.add_alarm),
-            //    onPressed: () =>  Navigator.push(
-            //      context,
-            //      MaterialPageRoute<void>(
-            //          builder: (context) => SettingPage()
-            //      ),
-            //    ),
-            //  ),
-            //),
+            title: Text('今日の御銘'),
           ),
           SliverStickyHeader(
             header: adContainer,
