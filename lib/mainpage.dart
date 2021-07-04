@@ -91,89 +91,121 @@ SliverStickyHeader createMonthlySliverStickyHeader(
     ){
   String monthString;
   Widget monthlyExpansionPanelList;
+  StateProvider<bool> monthlyExpandedProvider;
   switch(month){
     case Month.january:
       monthString = '1月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(januaryListProvider);
+      monthlyExpandedProvider = januaryExpandedProvider;
       break;
     case Month.february:
       monthString = '2月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(februaryListProvider);
+      monthlyExpandedProvider = februaryExpandedProvider;
       break;
     case Month.march:
       monthString = '3月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(marchListProvider);
+      monthlyExpandedProvider = marchExpandedProvider;
       break;
     case Month.april:
       monthString = '4月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(aprilListProvider);
+      monthlyExpandedProvider = aprilExpandedProvider;
       break;
     case Month.may:
       monthString = '5月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(mayListProvider);
+      monthlyExpandedProvider = mayExpandedProvider;
       break;
     case Month.june:
       monthString = '6月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(juneListProvider);
+      monthlyExpandedProvider = juneExpandedProvider;
       break;
     case Month.july:
       monthString = '7月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(julyListProvider);
+      monthlyExpandedProvider = julyExpandedProvider;
       break;
     case Month.august:
       monthString = '8月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(augustListProvider);
+      monthlyExpandedProvider = augustExpandedProvider;
       break;
     case Month.september:
       monthString = '9月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(septemberListProvider);
+      monthlyExpandedProvider = septemberExpandedProvider;
       break;
     case Month.october:
       monthString = '10月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(octoberListProvider);
+      monthlyExpandedProvider = octoberExpandedProvider;
       break;
     case Month.november:
       monthString = '11月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(novemberListProvider);
+      monthlyExpandedProvider = novemberExpandedProvider;
       break;
     case Month.december:
       monthString = '12月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(decemberListProvider);
+      monthlyExpandedProvider = decemberExpandedProvider;
       break;
   }
+  final isExpanded = useProvider(monthlyExpandedProvider).state;
   return SliverStickyHeader(
     header: Container(
       height: 60,
       color: Colors.lightGreen,
       padding: const EdgeInsets.symmetric(horizontal: 16),
       alignment: Alignment.centerLeft,
-      child: Text(
-        monthString,
-      ),
+      child: ListTile(
+        title: Text(monthString),
+        trailing: isExpanded ?
+          const Icon(Icons.arrow_drop_up) : const Icon(Icons.arrow_drop_down),
+        onTap: () => {
+          context.read(monthlyExpandedProvider).state = !isExpanded
+        },
+      )
     ),
     sliver: SliverList(
       delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
-          return monthlyExpansionPanelList;
+          return isExpanded ? monthlyExpansionPanelList : Container();
         },
-        childCount: 1,
+        childCount: useProvider(monthlyExpandedProvider).state ? 1 : 0,
         semanticIndexOffset: 2,
       ),
     ),
   );
 }
+
+final januaryExpandedProvider = StateProvider((ref) => false);
+final februaryExpandedProvider = StateProvider((ref) => false);
+final marchExpandedProvider = StateProvider((ref) => false);
+final aprilExpandedProvider = StateProvider((ref) => false);
+final mayExpandedProvider = StateProvider((ref) => false);
+final juneExpandedProvider = StateProvider((ref) => false);
+final julyExpandedProvider = StateProvider((ref) => false);
+final augustExpandedProvider = StateProvider((ref) => false);
+final septemberExpandedProvider = StateProvider((ref) => false);
+final octoberExpandedProvider = StateProvider((ref) => false);
+final novemberExpandedProvider = StateProvider((ref) => false);
+final decemberExpandedProvider = StateProvider((ref) => false);
 
 class _MonthlyExpansionPanelList extends HookWidget {
   const _MonthlyExpansionPanelList(this.monthlyItemListState);
