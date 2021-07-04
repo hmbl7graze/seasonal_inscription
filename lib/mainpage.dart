@@ -11,6 +11,7 @@ import 'custom_expansionpane_llist.dart';
 import 'providers.dart';
 import 'settingpage.dart';
 import 'today_name_dialog.dart';
+import 'purchase_page.dart';
 
 class MainPage extends HookWidget{
   final BannerAd januaryBanner = _createMonthlyBannerAd(Month.january);
@@ -57,6 +58,15 @@ class MainPage extends HookWidget{
               title: const Text('アプリ内購入'),
               leading: const Icon(Icons.shopping_cart_outlined),
               trailing: const Icon(Icons.arrow_forward),
+              onTap: () => {
+                Navigator.pop(context),
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                      builder: (context) => PurchasePage()
+                  ),
+                ),
+              }
             ),
             ListTile(
               title: const Text('アプリ情報'),
