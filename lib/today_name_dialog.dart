@@ -23,24 +23,20 @@ Future showTodayNameDialog(BuildContext context) async {
       return AlertDialog(
         content: Card(
           elevation: 0,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxHeight: 200,
-            ),
-            child: Column(
-              children: [
-                ListTile(
-                  title: Text(data.name,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.normal,
-                        fontSize: 40)),
-                  subtitle: Text(data.reading),
-                ),
-                ListTile(
-                  title: Text(data.detail),
-                )
-              ],
-            ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                title: Text(data.name,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 40)),
+                subtitle: Text(data.reading),
+              ),
+              ListTile(
+                title: Text(data.detail),
+              )
+            ],
           ),
         ),
         title: const Text('今日のおすすめは...'),
