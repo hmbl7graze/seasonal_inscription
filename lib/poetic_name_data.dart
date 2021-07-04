@@ -13,6 +13,35 @@ enum Month{
   december,
 }
 
+Month getMonth(int month){
+  switch(month){
+    case 1:
+      return Month.january;
+    case 2:
+      return Month.february;
+    case 3:
+      return Month.march;
+    case 4:
+      return Month.april;
+    case 5:
+      return Month.may;
+    case 6:
+      return Month.june;
+    case 7:
+      return Month.july;
+    case 8:
+      return Month.august;
+    case 9:
+      return Month.september;
+    case 10:
+      return Month.october;
+    case 11:
+      return Month.november;
+    case 12:
+      return Month.december;
+  }
+  return Month.january;
+}
 
 class Data {
   Data({
@@ -33,7 +62,7 @@ class Data {
 }
 
 final List<Data> dataList = [
-  Data(name: '初春', reading: 'そうしゅん', detail: '春の初めごろ。新年。', month: Month.january, isBeginning: true, isEnd: false),
+  Data(name: '初春', reading: 'はつはる', detail: '春の初めごろ。新年。', month: Month.january, isBeginning: true, isEnd: false),
   Data(name: '初霞', reading: 'はつがすみ', detail: '新年に山野にたなびく霞', month: Month.january, isBeginning: true, isEnd: false),
   Data(name: '初詣', reading: 'はつもうで', detail: '年が明けてから初めて神社や寺院などに参拝する行事', month: Month.january, isBeginning: true, isEnd: false),
   Data(name: '松風', reading: 'まつかぜ', detail: '松林にうちつける風', month: Month.january, isBeginning: false, isEnd: true),

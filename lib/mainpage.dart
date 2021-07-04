@@ -10,6 +10,7 @@ import 'package:seasonal_inscription/poetic_name_data.dart';
 import 'custom_expansionpane_llist.dart';
 import 'providers.dart';
 import 'settingpage.dart';
+import 'today_name_dialog.dart';
 
 class MainPage extends HookWidget{
   final BannerAd januaryBanner = _createMonthlyBannerAd(Month.january);
@@ -44,6 +45,10 @@ class MainPage extends HookWidget{
               title: const Text('今日の御銘'),
               leading: const Icon(Icons.wb_twighlight),
               trailing: const Icon(Icons.arrow_forward),
+              onTap: () => {
+                Navigator.pop(context),
+                showTodayNameDialog(context),
+              }
             ),
             ListTile(
               title: const Text('アプリ内購入'),
