@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.lightGreen,
           scaffoldBackgroundColor: Colors.lightGreen[50],
+          textTheme: ThemeData.light().textTheme.apply(fontFamily: "Hannari"),
         ),
       home: MainPage()
     );
