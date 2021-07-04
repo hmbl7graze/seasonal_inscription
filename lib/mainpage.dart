@@ -34,12 +34,15 @@ class MainPage extends HookWidget{
               title: const Text('通知設定'),
               leading: const Icon(Icons.add_alarm),
               trailing: const Icon(Icons.arrow_forward),
-              onTap: () =>  Navigator.push(
-                context,
-                MaterialPageRoute<void>(
-                    builder: (context) => SettingPage()
+              onTap: () =>  {
+                Navigator.pop(context),
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                      builder: (context) => SettingPage()
+                  ),
                 ),
-              ),
+              }
             ),
             ListTile(
               title: const Text('今日の御銘'),

@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:seasonal_inscription/hive_service.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'custom_schedule_page.dart';
+
+final flutterLocalNotificationsPlugin =
+FlutterLocalNotificationsPlugin();
 
 class SettingPage extends StatelessWidget {
   @override
@@ -36,6 +40,7 @@ class SettingPage extends StatelessWidget {
                           trailing: IconButton(
                             icon: const Icon(Icons.delete),
                             onPressed: ()async{
+                              await flutterLocalNotificationsPlugin.cancel(id);
                               await removeSchedule(id);
                             },
                           ),

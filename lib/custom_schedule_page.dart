@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:sprintf/sprintf.dart';
 import 'hive_service.dart';
+import 'notification_service.dart';
 
 class CustomSchedulePage extends HookWidget {
   @override
@@ -14,10 +15,16 @@ class CustomSchedulePage extends HookWidget {
         actions: <Widget>[
           ElevatedButton(
             onPressed: () async {
-              await saveNewSchedule(
+              final id = await saveNewSchedule(
                   context.read(weekdayProvider).state,
                   context.read(hourProvider).state,
                   context.read(minuteProvider).state
+              );
+              await scheduleWeeklyNotification(
+                  context.read(weekdayProvider).state,
+                  context.read(hourProvider).state,
+                  context.read(minuteProvider).state,
+                  id
               );
               Navigator.pop(context);
             },

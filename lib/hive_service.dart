@@ -1,15 +1,15 @@
 import 'dart:math';
 import 'package:hive/hive.dart';
 
-Future<void> saveNewSchedule(int weekday, int hour, int minute) async{
+Future<int> saveNewSchedule(int weekday, int hour, int minute) async{
   if(weekday < 1 || weekday > 7){
-    return;
+    return 0;
   }
   if(hour < 0 || hour > 23){
-    return;
+    return 0;
   }
   if(minute < 0 || minute > 59){
-    return;
+    return 0;
   }
 
   final box = Hive.box<List<int>>('NotificationSchedule');
@@ -26,6 +26,7 @@ Future<void> saveNewSchedule(int weekday, int hour, int minute) async{
 
   await box.put(id, [weekday, hour, minute]);
   await box.put('IDList', idList);
+  return id;
 }
 
 List<int> getSchedule(int id) {
