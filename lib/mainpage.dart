@@ -28,6 +28,7 @@ class MainPage extends HookWidget{
     //  child: adWidget,
     //);
     return Scaffold(
+      backgroundColor: Colors.lightGreen.withRed(200),
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
