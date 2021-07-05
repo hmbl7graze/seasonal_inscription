@@ -81,7 +81,7 @@ class MainPage extends HookWidget{
         slivers: <Widget>[
           const SliverAppBar(
             floating: true,
-            title: Text('今日の御銘'),
+            title: Text('今日の御銘', style: TextStyle(fontFamily: 'Hannari'),),
           ),
           //SliverStickyHeader(
           //  header: adContainer,

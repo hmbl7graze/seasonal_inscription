@@ -14,7 +14,7 @@ class SettingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('通知設定'),
+        title: const Text('通知設定', style: TextStyle(fontFamily: 'Hannari'),),
         centerTitle: true,
       ),
       body: Container(

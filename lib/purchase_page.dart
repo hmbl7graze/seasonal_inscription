@@ -5,7 +5,7 @@ class PurchasePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('購入'),
+        title: const Text('購入', style: TextStyle(fontFamily: 'Hannari'),),
       ),
       body: Container(
         child: Center(
