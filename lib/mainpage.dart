@@ -9,9 +9,9 @@ import 'package:seasonal_inscription/poetic_name_data.dart';
 
 import 'custom_expansionpane_llist.dart';
 import 'providers.dart';
+import 'purchase_page.dart';
 import 'settingpage.dart';
 import 'today_name_dialog.dart';
-import 'purchase_page.dart';
 
 class MainPage extends HookWidget{
   final BannerAd januaryBanner = _createMonthlyBannerAd(Month.january);
@@ -20,13 +20,13 @@ class MainPage extends HookWidget{
   Widget build(BuildContext context){
     januaryBanner.load();
 
-    final adWidget = AdWidget(ad: januaryBanner);
-    final adContainer = Container(
-      alignment: Alignment.center,
-      width: januaryBanner.size.width.toDouble(),
-      height: januaryBanner.size.height.toDouble(),
-      child: adWidget,
-    );
+    //final adWidget = AdWidget(ad: januaryBanner);
+    //final adContainer = Container(
+    //  alignment: Alignment.center,
+    //  width: januaryBanner.size.width.toDouble(),
+    //  height: januaryBanner.size.height.toDouble(),
+    //  child: adWidget,
+    //);
     return Scaffold(
       drawer: Drawer(
         child: ListView(
@@ -82,9 +82,9 @@ class MainPage extends HookWidget{
             floating: true,
             title: Text('今日の御銘'),
           ),
-          SliverStickyHeader(
-            header: adContainer,
-          ),
+          //SliverStickyHeader(
+          //  header: adContainer,
+          //),
           createMonthlySliverStickyHeader(context, Month.january),
           createMonthlySliverStickyHeader(context, Month.february),
           createMonthlySliverStickyHeader(context, Month.march),
@@ -110,85 +110,100 @@ SliverStickyHeader createMonthlySliverStickyHeader(
   String monthString;
   Widget monthlyExpansionPanelList;
   StateProvider<bool> monthlyExpandedProvider;
+  Color monthlyColor = Colors.lightGreen;
+  const depth = 5;
+  const bias = 200;
   switch(month){
     case Month.january:
       monthString = '1月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(januaryListProvider);
       monthlyExpandedProvider = januaryExpandedProvider;
+      monthlyColor = Colors.lightGreen.withRed(bias - depth * 11);
       break;
     case Month.february:
       monthString = '2月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(februaryListProvider);
       monthlyExpandedProvider = februaryExpandedProvider;
+      monthlyColor = Colors.lightGreen.withRed(bias - depth * 10);
       break;
     case Month.march:
       monthString = '3月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(marchListProvider);
       monthlyExpandedProvider = marchExpandedProvider;
+      monthlyColor = Colors.lightGreen.withRed(bias - depth * 9);
       break;
     case Month.april:
       monthString = '4月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(aprilListProvider);
       monthlyExpandedProvider = aprilExpandedProvider;
+      monthlyColor = Colors.lightGreen.withRed(bias - depth * 8);
       break;
     case Month.may:
       monthString = '5月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(mayListProvider);
       monthlyExpandedProvider = mayExpandedProvider;
+      monthlyColor = Colors.lightGreen.withRed(bias - depth * 7);
       break;
     case Month.june:
       monthString = '6月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(juneListProvider);
       monthlyExpandedProvider = juneExpandedProvider;
+      monthlyColor = Colors.lightGreen.withRed(bias - depth * 6);
       break;
     case Month.july:
       monthString = '7月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(julyListProvider);
       monthlyExpandedProvider = julyExpandedProvider;
+      monthlyColor = Colors.lightGreen.withRed(bias - depth * 5);
       break;
     case Month.august:
       monthString = '8月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(augustListProvider);
       monthlyExpandedProvider = augustExpandedProvider;
+      monthlyColor = Colors.lightGreen.withRed(bias - depth * 4);
       break;
     case Month.september:
       monthString = '9月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(septemberListProvider);
       monthlyExpandedProvider = septemberExpandedProvider;
+      monthlyColor = Colors.lightGreen.withRed(bias - depth * 3);
       break;
     case Month.october:
       monthString = '10月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(octoberListProvider);
       monthlyExpandedProvider = octoberExpandedProvider;
+      monthlyColor = Colors.lightGreen.withRed(bias - depth * 2);
       break;
     case Month.november:
       monthString = '11月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(novemberListProvider);
       monthlyExpandedProvider = novemberExpandedProvider;
+      monthlyColor = Colors.lightGreen.withRed(bias - depth);
       break;
     case Month.december:
       monthString = '12月';
       monthlyExpansionPanelList =
           _MonthlyExpansionPanelList(decemberListProvider);
       monthlyExpandedProvider = decemberExpandedProvider;
+      monthlyColor = Colors.lightGreen.withRed(bias);
       break;
   }
   final isExpanded = useProvider(monthlyExpandedProvider).state;
   return SliverStickyHeader(
     header: Container(
       height: 60,
-      color: Colors.lightGreen,
+      color: monthlyColor,
       padding: const EdgeInsets.symmetric(horizontal: 16),
       alignment: Alignment.centerLeft,
       child: ListTile(
