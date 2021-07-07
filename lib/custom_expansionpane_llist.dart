@@ -270,7 +270,7 @@ class _ExpansionPanelListState extends State<CustomExpansionPanelList> {
       items.add(
         MaterialSlice(
           key: _SaltedKey<BuildContext, int>(context, index * 2),
-          color: Colors.lightGreen[50],
+          color: Colors.lightGreen.withRed(200),
           child: Material(
             elevation: 2,
             borderRadius: BorderRadius.all(Radius.circular(_radiusValue)),
