@@ -83,7 +83,7 @@ class MainPage extends HookWidget{
                   'This application has been approved for all audiences.',
                   children: [
                     const Padding(
-                      padding: EdgeInsets.only(top: 20),
+                      padding: EdgeInsets.all(20),
                       child: Text('更新履歴 \n'
                           '1.0.0: 初版リリース'),
                     ),
