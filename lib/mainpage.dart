@@ -8,6 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:seasonal_inscription/poetic_name_data.dart';
 
 import 'custom_expansionpane_llist.dart';
+import 'license_page.dart';
 import 'providers.dart';
 import 'purchase_page.dart';
 import 'settingpage.dart';
@@ -73,6 +74,34 @@ class MainPage extends HookWidget{
               title: const Text('アプリ情報'),
               leading: const Icon(Icons.info_outline),
               trailing: const Icon(Icons.arrow_forward),
+              onTap: () => {
+                Navigator.pop(context),
+                showAboutDialog(
+                  context: context,
+                  applicationVersion: '1.0.0',
+                  applicationLegalese:
+                  'This application has been approved for all audiences.',
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(top: 20),
+                      child: Text('更新履歴 \n'
+                          '1.0.0: 初版リリース'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute<void>(
+                              builder: (context) => CCLicensePage()
+                          ),
+                        );
+                      },
+                      child: const Text('コンテンツのライセンス情報'),
+                    )
+                  ],
+                )
+              },
             )
           ]
         )
