@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -260,9 +261,44 @@ SliverStickyHeader createMonthlySliverStickyHeader(
                   return monthlyExpansionPanelList;
                 }
                 if(index == 1){
+                  final data = dataList[index];
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 1),
+                    child: ClipRect(
+                      child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+                          child: CustomExpansionPanelList(
+                            children: <ExpansionPanel>[ExpansionPanel(
+                              headerBuilder: (BuildContext context, bool isExpand) {
+                                return ListTile(
+                                  title: Text(data.name),
+                                  subtitle: Text(data.reading),
+                                    onTap: () => {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute<void>(
+                                            builder: (context) => PurchasePage()
+                                        ),
+                                      ),
+                                    }
+                                );
+                                },
+                              body: ListTile(
+                                title: Text(data.detail),
+                              ),
+                            )],
+                          )
+                      ),
+                    ),
+                  );
+                }
+                if(index == 2){
                   return ListTile(
-                    title: const Text('プレミアム機能を購入することで全ての御銘を確認できます'),
-                    tileColor: Colors.amber,
+                    leading: const Icon(
+                      Icons.shopping_cart_outlined,
+                    ),
+                    title: const Text('購入すると300種以上の御銘が確認できます'),
+                    tileColor: Colors.white,
                     onTap: () => {
                       Navigator.push(
                         context,
@@ -300,7 +336,7 @@ int _calculateChildCount(){
     return 1;
   }
   else {
-    return 3;
+    return 4;
   }
 }
 
