@@ -15,19 +15,13 @@ import 'settingpage.dart';
 import 'today_name_dialog.dart';
 
 class MainPage extends HookWidget{
-  final BannerAd januaryBanner = _createMonthlyBannerAd(Month.january);
 
   @override
   Widget build(BuildContext context){
-    januaryBanner.load();
+    for(final bannerAd in bannerAdList){
+      bannerAd.load();
+    }
 
-    //final adWidget = AdWidget(ad: januaryBanner);
-    //final adContainer = Container(
-    //  alignment: Alignment.center,
-    //  width: januaryBanner.size.width.toDouble(),
-    //  height: januaryBanner.size.height.toDouble(),
-    //  child: adWidget,
-    //);
     return Scaffold(
       backgroundColor: Colors.lightGreen.withRed(200),
       drawer: Drawer(
@@ -112,9 +106,6 @@ class MainPage extends HookWidget{
             floating: true,
             title: Text('今日の御銘', style: TextStyle(fontFamily: 'Hannari'),),
           ),
-          //SliverStickyHeader(
-          //  header: adContainer,
-          //),
           createMonthlySliverStickyHeader(context, Month.january),
           createMonthlySliverStickyHeader(context, Month.february),
           createMonthlySliverStickyHeader(context, Month.march),
@@ -141,6 +132,7 @@ SliverStickyHeader createMonthlySliverStickyHeader(
   Widget monthlyExpansionPanelList;
   StateProvider<bool> monthlyExpandedProvider;
   Color monthlyColor = Colors.lightGreen;
+  BannerAd bannerAd;
   const depth = 5;
   const bias = 200;
   switch(month){
@@ -150,6 +142,7 @@ SliverStickyHeader createMonthlySliverStickyHeader(
           _MonthlyExpansionPanelList(januaryListProvider);
       monthlyExpandedProvider = januaryExpandedProvider;
       monthlyColor = Colors.lightGreen.withRed(bias - depth * 11);
+      bannerAd = bannerAdList[0];
       break;
     case Month.february:
       monthString = '2月';
@@ -157,6 +150,7 @@ SliverStickyHeader createMonthlySliverStickyHeader(
           _MonthlyExpansionPanelList(februaryListProvider);
       monthlyExpandedProvider = februaryExpandedProvider;
       monthlyColor = Colors.lightGreen.withRed(bias - depth * 10);
+      bannerAd = bannerAdList[1];
       break;
     case Month.march:
       monthString = '3月';
@@ -164,6 +158,7 @@ SliverStickyHeader createMonthlySliverStickyHeader(
           _MonthlyExpansionPanelList(marchListProvider);
       monthlyExpandedProvider = marchExpandedProvider;
       monthlyColor = Colors.lightGreen.withRed(bias - depth * 9);
+      bannerAd = bannerAdList[2];
       break;
     case Month.april:
       monthString = '4月';
@@ -171,6 +166,7 @@ SliverStickyHeader createMonthlySliverStickyHeader(
           _MonthlyExpansionPanelList(aprilListProvider);
       monthlyExpandedProvider = aprilExpandedProvider;
       monthlyColor = Colors.lightGreen.withRed(bias - depth * 8);
+      bannerAd = bannerAdList[3];
       break;
     case Month.may:
       monthString = '5月';
@@ -178,6 +174,7 @@ SliverStickyHeader createMonthlySliverStickyHeader(
           _MonthlyExpansionPanelList(mayListProvider);
       monthlyExpandedProvider = mayExpandedProvider;
       monthlyColor = Colors.lightGreen.withRed(bias - depth * 7);
+      bannerAd = bannerAdList[4];
       break;
     case Month.june:
       monthString = '6月';
@@ -185,6 +182,7 @@ SliverStickyHeader createMonthlySliverStickyHeader(
           _MonthlyExpansionPanelList(juneListProvider);
       monthlyExpandedProvider = juneExpandedProvider;
       monthlyColor = Colors.lightGreen.withRed(bias - depth * 6);
+      bannerAd = bannerAdList[5];
       break;
     case Month.july:
       monthString = '7月';
@@ -192,6 +190,7 @@ SliverStickyHeader createMonthlySliverStickyHeader(
           _MonthlyExpansionPanelList(julyListProvider);
       monthlyExpandedProvider = julyExpandedProvider;
       monthlyColor = Colors.lightGreen.withRed(bias - depth * 5);
+      bannerAd = bannerAdList[6];
       break;
     case Month.august:
       monthString = '8月';
@@ -199,6 +198,7 @@ SliverStickyHeader createMonthlySliverStickyHeader(
           _MonthlyExpansionPanelList(augustListProvider);
       monthlyExpandedProvider = augustExpandedProvider;
       monthlyColor = Colors.lightGreen.withRed(bias - depth * 4);
+      bannerAd = bannerAdList[7];
       break;
     case Month.september:
       monthString = '9月';
@@ -206,6 +206,7 @@ SliverStickyHeader createMonthlySliverStickyHeader(
           _MonthlyExpansionPanelList(septemberListProvider);
       monthlyExpandedProvider = septemberExpandedProvider;
       monthlyColor = Colors.lightGreen.withRed(bias - depth * 3);
+      bannerAd = bannerAdList[8];
       break;
     case Month.october:
       monthString = '10月';
@@ -213,6 +214,7 @@ SliverStickyHeader createMonthlySliverStickyHeader(
           _MonthlyExpansionPanelList(octoberListProvider);
       monthlyExpandedProvider = octoberExpandedProvider;
       monthlyColor = Colors.lightGreen.withRed(bias - depth * 2);
+      bannerAd = bannerAdList[9];
       break;
     case Month.november:
       monthString = '11月';
@@ -220,6 +222,7 @@ SliverStickyHeader createMonthlySliverStickyHeader(
           _MonthlyExpansionPanelList(novemberListProvider);
       monthlyExpandedProvider = novemberExpandedProvider;
       monthlyColor = Colors.lightGreen.withRed(bias - depth);
+      bannerAd = bannerAdList[10];
       break;
     case Month.december:
       monthString = '12月';
@@ -227,6 +230,7 @@ SliverStickyHeader createMonthlySliverStickyHeader(
           _MonthlyExpansionPanelList(decemberListProvider);
       monthlyExpandedProvider = decemberExpandedProvider;
       monthlyColor = Colors.lightGreen.withRed(bias);
+      bannerAd = bannerAdList[11];
       break;
   }
   final isExpanded = useProvider(monthlyExpandedProvider).state;
@@ -248,13 +252,56 @@ SliverStickyHeader createMonthlySliverStickyHeader(
     sliver: SliverList(
       delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
-          return isExpanded ? monthlyExpansionPanelList : Container();
-        },
-        childCount: useProvider(monthlyExpandedProvider).state ? 1 : 0,
+              if(!isExpanded){
+                return Container();
+              }
+              if(!isPurchase){
+                if(index == 0){
+                  return monthlyExpansionPanelList;
+                }
+                if(index == 1){
+                  return ListTile(
+                    title: const Text('プレミアム機能を購入することで全ての御銘を確認できます'),
+                    tileColor: Colors.amber,
+                    onTap: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute<void>(
+                            builder: (context) => PurchasePage()
+                        ),
+                      ),
+                    }
+                  );
+                }
+                else{
+                  return Container(
+                    alignment: Alignment.center,
+                    width: bannerAd.size.width.toDouble(),
+                    height: bannerAd.size.height.toDouble(),
+                    child: AdWidget(ad: bannerAd),
+                  );
+                }
+              }
+              else{
+                return monthlyExpansionPanelList;
+              }
+            },
+        childCount: useProvider(monthlyExpandedProvider).state ?
+          _calculateChildCount() :
+          0,
         semanticIndexOffset: 2,
       ),
     ),
   );
+}
+
+int _calculateChildCount(){
+  if(isPurchase) {
+    return 1;
+  }
+  else {
+    return 3;
+  }
 }
 
 final januaryExpandedProvider = StateProvider((ref) => false);
@@ -306,6 +353,21 @@ class _MonthlyExpansionPanelList extends HookWidget {
     );
   }
 }
+
+List<BannerAd> bannerAdList =[
+  _createMonthlyBannerAd(Month.january),
+  _createMonthlyBannerAd(Month.february),
+  _createMonthlyBannerAd(Month.march),
+  _createMonthlyBannerAd(Month.april),
+  _createMonthlyBannerAd(Month.may),
+  _createMonthlyBannerAd(Month.june),
+  _createMonthlyBannerAd(Month.july),
+  _createMonthlyBannerAd(Month.august),
+  _createMonthlyBannerAd(Month.september),
+  _createMonthlyBannerAd(Month.october),
+  _createMonthlyBannerAd(Month.november),
+  _createMonthlyBannerAd(Month.december),
+];
 
 BannerAd _createMonthlyBannerAd(Month month){
   final adUnitId = _getAdUnitId(month);
