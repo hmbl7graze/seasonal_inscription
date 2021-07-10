@@ -7,11 +7,11 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:seasonal_inscription/poetic_name_data.dart';
 
-import 'custom_expansionpane_llist.dart';
+import 'custom_expansionPanel_list.dart';
 import 'license_page.dart';
 import 'providers.dart';
 import 'purchase_page.dart';
-import 'settingpage.dart';
+import 'setting_page.dart';
 import 'today_name_dialog.dart';
 
 class MainPage extends HookWidget{
