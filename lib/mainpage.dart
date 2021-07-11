@@ -9,6 +9,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:seasonal_inscription/poetic_name_data.dart';
 
 import 'custom_expansionPanel_list.dart';
+import 'hive_service.dart';
 import 'license_page.dart';
 import 'providers.dart';
 import 'purchase_page.dart';
@@ -22,6 +23,20 @@ class MainPage extends HookWidget{
     for(final bannerAd in bannerAdList){
       bannerAd.load();
     }
+
+    //日付が変わっていたらおすすめ画面を出す
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final now = DateTime.now();
+      final dateNow = DateTime(now.year, now.month, now.day);
+      final latestOpenDate = getLatestOpenDate();
+      if(latestOpenDate == null){
+        setLatestOpenDate(dateNow);
+      }
+      else if(dateNow.difference(latestOpenDate).inDays != 0){
+        showTodayNameDialog(context);
+        setLatestOpenDate(dateNow);
+      }
+    });
 
     return Scaffold(
       backgroundColor: Colors.lightGreen.withRed(200),

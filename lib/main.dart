@@ -12,6 +12,7 @@ Future<void> main() async {
 
   await Hive.initFlutter();
   await Hive.openBox<List<int>>('NotificationSchedule');
+  await Hive.openBox<DateTime>('LatestOpenDate');
 
   await initializeNotification();
 

@@ -41,3 +41,12 @@ Future<void> removeSchedule(int id) async{
   await box.delete(id);
   await box.put('IDList', idList);
 }
+
+DateTime getLatestOpenDate() {
+  //Hive.box<DateTime>('LatestOpenDate').delete('LatestOpenDate');
+  return Hive.box<DateTime>('LatestOpenDate').get('LatestOpenDate');
+}
+
+Future<void> setLatestOpenDate(DateTime dateTime) {
+  return Hive.box<DateTime>('LatestOpenDate').put('LatestOpenDate', dateTime);
+}
