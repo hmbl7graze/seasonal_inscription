@@ -32,6 +32,7 @@ dependencies:
   hive: ^2.0.4
   hive_flutter: ^1.0.0
   hooks_riverpod: ^0.14.0+4
+  purchases_flutter: ^3.4.0
   sprintf: ^6.0.0
   uuid: ^3.0.4
 

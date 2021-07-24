@@ -271,7 +271,7 @@ SliverStickyHeader createMonthlySliverStickyHeader(
               if(!isExpanded){
                 return Container();
               }
-              if(!isPurchase){
+              if(!getIsPurchase()){
                 if(index == 0){
                   return monthlyExpansionPanelList;
                 }
@@ -347,7 +347,7 @@ SliverStickyHeader createMonthlySliverStickyHeader(
 }
 
 int _calculateChildCount(){
-  if(isPurchase) {
+  if(getIsPurchase()) {
     return 1;
   }
   else {

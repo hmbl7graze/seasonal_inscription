@@ -1,0 +1,38 @@
+{
+  "identifier" : "45D48D4C",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "3",
+      "familyShareable" : false,
+      "internalID" : "AFD87C29",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.hmbl7graze.seasonalInscription",
+      "referenceName" : "premium",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "subscriptionOffersKeyPair" : {
+    "id" : "4ADF15AD",
+    "privateKey" : "MF8CAQEEGBL0kkPFyT3OBMTSePOt0oeBRKQfOXE0GqAKBggqhkjOPQMBAaE0AzIA\nBDwObKeToq+WLpf/nnLOvKVPl2cS24LVVT8BaXzZFSaKu1thet7Qm/nGWNvqrnD9\npg==",
+    "publicKey" : "MEkwEwYHKoZIzj0CAQYIKoZIzj0DAQEDMgAEPA5sp5Oir5Yul/+ecs68pU+XZxLb\ngtVVPwFpfNkVJoq7W2F63tCb+cZY2+qucP2m"
+  },
+  "version" : {
+    "major" : 1,
+    "minor" : 1
+  }
+}

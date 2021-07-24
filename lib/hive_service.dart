@@ -43,10 +43,18 @@ Future<void> removeSchedule(int id) async{
 }
 
 DateTime getLatestOpenDate() {
-  //Hive.box<DateTime>('LatestOpenDate').delete('LatestOpenDate');
   return Hive.box<DateTime>('LatestOpenDate').get('LatestOpenDate');
 }
 
 Future<void> setLatestOpenDate(DateTime dateTime) {
   return Hive.box<DateTime>('LatestOpenDate').put('LatestOpenDate', dateTime);
+}
+
+bool getIsPurchase() {
+  return Hive.box<bool>('IsPurchase').get('IsPurchase');
+}
+
+// ignore: avoid_positional_boolean_parameters
+Future<void> setIsPurchase(bool isPurchase) {
+  return Hive.box<bool>('IsPurchase').put('IsPurchase', isPurchase);
 }

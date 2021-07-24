@@ -1,7 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'poetic_name_data.dart';
 
-bool isPurchase = false;
+import 'hive_service.dart';
+import 'poetic_name_data.dart';
 
 class Item {
   Item({
@@ -30,7 +30,7 @@ class MonthlyItemListState extends StateNotifier<List<Item>> {
 
 List<Item> generateItems(Month month) {
   final monthlyDataList
-  = isPurchase ?
+  = getIsPurchase() ?
   dataList.where((Data data) => data.month == month).toList() :
   dataList.where(
     (Data data) => data.month == month && data.needPurchase == false)

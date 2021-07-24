@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
+
+import 'hive_service.dart';
 
 class PurchasePage extends StatelessWidget {
   @override
@@ -8,7 +11,7 @@ class PurchasePage extends StatelessWidget {
         title: const Text('購入', style: TextStyle(fontFamily: 'Hannari'),),
       ),
       body: Container(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: Center(
           child: Column(
             children: [
@@ -28,10 +31,14 @@ class PurchasePage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(10, 10, 10, 20),
                       child: ElevatedButton(
-                        onPressed: () => onPurchaseButtonClick(context),
-                        child: const Text('購入する(￥300)',
-                          style: TextStyle(fontSize: 21),),
-                      ),
+                        onPressed: getIsPurchase()
+                            ? null : () => onPurchaseButtonClick(context),
+                        child: getIsPurchase()
+                          ? const Text('購入済みです',
+                            style: TextStyle(fontSize: 21))
+                          : const Text('購入する(￥370)',
+                            style: TextStyle(fontSize: 21)),
+      ),
                     )
                   ],
                 ),
@@ -65,8 +72,24 @@ class PurchasePage extends StatelessWidget {
     );
   }
 
-  void onPurchaseButtonClick(BuildContext context){
-    Navigator.pop(context);
+  Future<void> onPurchaseButtonClick(BuildContext context) async {
+    Offerings offerings;
+    try {
+      offerings = await Purchases.getOfferings();
+      print(offerings.toString());
+      print(offerings.current.toString());
+      if(offerings != null && offerings.current != null) {
+        await Purchases.purchasePackage(offerings.current.availablePackages[0]);
+        final purchaserInfo = await Purchases.getPurchaserInfo();
+        if(purchaserInfo.entitlements.all['premium'] != null){
+          await setIsPurchase(
+              purchaserInfo.entitlements.all['premium'].isActive
+          );
+        }
+      }
+    } on Exception catch(e){
+      print(e);
+    }
   }
 
   void onRestoreButtonClick(BuildContext context){
