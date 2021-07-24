@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 
 import 'hive_service.dart';
+import 'poetic_name_data.dart';
+import 'providers.dart';
 
 class PurchasePage extends StatelessWidget {
   @override
@@ -92,7 +95,81 @@ class PurchasePage extends StatelessWidget {
     }
   }
 
-  void onRestoreButtonClick(BuildContext context){
-    Navigator.pop(context);
+  Future<void> onRestoreButtonClick(BuildContext context) async {
+    final restoredInfo = await Purchases.restoreTransactions();
+    if(restoredInfo.entitlements.all['premium'] != null){
+      await setIsPurchase(
+          restoredInfo.entitlements.all['premium'].isActive
+      );
+      context.read(isPurchaseProvider).state =
+          restoredInfo.entitlements.all['premium'].isActive;
+
+      context.read(januaryListProvider.notifier).refresh(Month.january);
+      context.read(februaryListProvider.notifier).refresh(Month.february);
+      context.read(marchListProvider.notifier).refresh(Month.march);
+      context.read(aprilListProvider.notifier).refresh(Month.april);
+      context.read(mayListProvider.notifier).refresh(Month.may);
+      context.read(juneListProvider.notifier).refresh(Month.june);
+      context.read(julyListProvider.notifier).refresh(Month.july);
+      context.read(augustListProvider.notifier).refresh(Month.august);
+      context.read(septemberListProvider.notifier).refresh(Month.september);
+      context.read(octoberListProvider.notifier).refresh(Month.october);
+      context.read(novemberListProvider.notifier).refresh(Month.november);
+      context.read(decemberListProvider.notifier).refresh(Month.december);
+
+      restoredInfo.entitlements.all['premium'].isActive
+          ? await showRestoreDialog(context)
+          : await showRestoreFailDialog(context);
+    }
+    else{
+      await showRestoreFailDialog(context);
+    }
+  }
+
+  Future showRestoreDialog(BuildContext context) async {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: const Card(
+            elevation: 0,
+            child: ListTile(
+              title: Text('復元が完了しました', style: TextStyle(fontSize: 20)),
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('閉じる'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future showRestoreFailDialog(BuildContext context) async {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: const Card(
+            elevation: 0,
+            child: ListTile(
+              title: Text(
+                  '購入履歴が確認できませんでした',
+                  style: TextStyle(fontSize: 20)
+              ),
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('閉じる'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

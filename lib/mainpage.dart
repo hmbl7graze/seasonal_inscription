@@ -24,6 +24,10 @@ class MainPage extends HookWidget{
       bannerAd.load();
     }
 
+    if(context.read(isPurchaseProvider).state != getIsPurchase()){
+      context.read(isPurchaseProvider).state = getIsPurchase();
+    }
+
     //日付が変わっていたらおすすめ画面を出す
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final now = DateTime.now();
@@ -250,6 +254,7 @@ SliverStickyHeader createMonthlySliverStickyHeader(
       break;
   }
   final isExpanded = useProvider(monthlyExpandedProvider).state;
+  final isPurchase = useProvider(isPurchaseProvider).state;
   return SliverStickyHeader(
     header: Container(
       height: 60,
@@ -271,7 +276,7 @@ SliverStickyHeader createMonthlySliverStickyHeader(
               if(!isExpanded){
                 return Container();
               }
-              if(!getIsPurchase()){
+              if(!isPurchase){
                 if(index == 0){
                   return monthlyExpansionPanelList;
                 }
@@ -347,7 +352,7 @@ SliverStickyHeader createMonthlySliverStickyHeader(
 }
 
 int _calculateChildCount(){
-  if(getIsPurchase()) {
+  if(useProvider(isPurchaseProvider).state) {
     return 1;
   }
   else {

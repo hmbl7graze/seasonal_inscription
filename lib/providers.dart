@@ -26,6 +26,9 @@ class MonthlyItemListState extends StateNotifier<List<Item>> {
     tempItemList[index].isExpanded = false;
     state = tempItemList;
   }
+  void refresh(Month month){
+    state = generateItems(month);
+  }
 }
 
 List<Item> generateItems(Month month) {
@@ -89,3 +92,5 @@ StateNotifierProvider<MonthlyItemListState, List<Item>>
 final decemberListProvider =
 StateNotifierProvider<MonthlyItemListState, List<Item>>
   ((ref) => MonthlyItemListState(generateItems(Month.december)));
+
+final isPurchaseProvider = StateProvider((ref) => false);
