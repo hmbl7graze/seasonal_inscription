@@ -48,20 +48,6 @@ class MainPage extends HookWidget{
         child: ListView(
           children: <Widget>[
             ListTile(
-              title: const Text('通知設定'),
-              leading: const Icon(Icons.add_alarm),
-              trailing: const Icon(Icons.arrow_forward),
-              onTap: () =>  {
-                Navigator.pop(context),
-                Navigator.push(
-                  context,
-                  MaterialPageRoute<void>(
-                      builder: (context) => SettingPage()
-                  ),
-                ),
-              }
-            ),
-            ListTile(
               title: const Text('今日の御銘'),
               leading: const Icon(Icons.wb_twighlight),
               trailing: const Icon(Icons.arrow_forward),
@@ -69,6 +55,20 @@ class MainPage extends HookWidget{
                 Navigator.pop(context),
                 showTodayNameDialog(context),
               }
+            ),
+            ListTile(
+                title: const Text('通知設定'),
+                leading: const Icon(Icons.add_alarm),
+                trailing: const Icon(Icons.arrow_forward),
+                onTap: () =>  {
+                  Navigator.pop(context),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                        builder: (context) => SettingPage()
+                    ),
+                  ),
+                }
             ),
             ListTile(
               title: const Text('アプリ内購入'),
