@@ -45,7 +45,12 @@ dev_dependencies:
     sdk: flutter
   hive_generator: ^1.1.0
   pedantic_mono: any
+  flutter_launcher_icons: ^0.9.1
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/Icon.jpg"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
