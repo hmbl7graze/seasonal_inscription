@@ -7,6 +7,8 @@ import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:seasonal_inscription/poetic_name_data.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'custom_expansionPanel_list.dart';
 import 'hive_service.dart';
@@ -96,10 +98,20 @@ class MainPage extends HookWidget{
                   applicationLegalese:
                   'This application has been approved for all audiences.',
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.all(20),
-                      child: Text('更新履歴 \n'
-                          '1.0.0: 初版リリース'),
+                      child: Linkify(
+                        onOpen: (LinkableElement link) async {
+                          if (await canLaunch(link.url)) {
+                            await launch(link.url);
+                          }
+                          else {
+                              throw 'Could not launch $link';
+                          }
+                          },
+                        text: 'プライバシーポリシー\n'
+                            'https://hmbl7graze.github.io/seasonal_inscription/PrivacyPolicy/PrivacyPolicy',
+                      ),
                     ),
                     TextButton(
                       onPressed: () {
@@ -451,51 +463,51 @@ String _getAdUnitId(Month month){
     case Month.january:
       return Platform.isAndroid
           ? 'ca-app-pub-3940256099942544/6300978111'
-          : 'ca-app-pub-3940256099942544/2934735716';
+          : 'ca-app-pub-1175513766978931/9306277985';
     case Month.february:
       return Platform.isAndroid
           ? 'ca-app-pub-3940256099942544/6300978111'
-          : 'ca-app-pub-3940256099942544/2934735716';
+          : 'ca-app-pub-1175513766978931/6335310349';
     case Month.march:
       return Platform.isAndroid
           ? 'ca-app-pub-3940256099942544/6300978111'
-          : 'ca-app-pub-3940256099942544/2934735716';
+          : 'ca-app-pub-1175513766978931/1769734592';
     case Month.april:
       return Platform.isAndroid
           ? 'ca-app-pub-3940256099942544/6300978111'
-          : 'ca-app-pub-3940256099942544/2934735716';
+          : 'ca-app-pub-1175513766978931/7265248634';
     case Month.may:
       return Platform.isAndroid
           ? 'ca-app-pub-3940256099942544/6300978111'
-          : 'ca-app-pub-3940256099942544/2934735716';
+          : 'ca-app-pub-1175513766978931/1821350263';
     case Month.june:
       return Platform.isAndroid
           ? 'ca-app-pub-3940256099942544/6300978111'
-          : 'ca-app-pub-3940256099942544/2934735716';
+          : 'ca-app-pub-1175513766978931/9316696905';
     case Month.july:
       return Platform.isAndroid
           ? 'ca-app-pub-3940256099942544/6300978111'
-          : 'ca-app-pub-3940256099942544/2934735716';
+          : 'ca-app-pub-1175513766978931/2751288557';
     case Month.august:
       return Platform.isAndroid
           ? 'ca-app-pub-3940256099942544/6300978111'
-          : 'ca-app-pub-3940256099942544/2934735716';
+          : 'ca-app-pub-1175513766978931/3872798530';
     case Month.september:
       return Platform.isAndroid
           ? 'ca-app-pub-3940256099942544/6300978111'
-          : 'ca-app-pub-3940256099942544/2934735716';
+          : 'ca-app-pub-1175513766978931/6115818491';
     case Month.october:
       return Platform.isAndroid
           ? 'ca-app-pub-3940256099942544/6300978111'
-          : 'ca-app-pub-3940256099942544/2934735716';
+          : 'ca-app-pub-1175513766978931/5924246802';
     case Month.november:
       return Platform.isAndroid
           ? 'ca-app-pub-3940256099942544/6300978111'
-          : 'ca-app-pub-3940256099942544/2934735716';
+          : 'ca-app-pub-1175513766978931/5732675111';
     case Month.december:
       return Platform.isAndroid
           ? 'ca-app-pub-3940256099942544/6300978111'
-          : 'ca-app-pub-3940256099942544/2934735716';
+          : 'ca-app-pub-1175513766978931/1601858410';
   }
   return'';
 }
