@@ -132,25 +132,48 @@ class MainPage extends HookWidget{
           ]
         )
       ),
-      body: CustomScrollView(
-        slivers: <Widget>[
-          const SliverAppBar(
-            floating: true,
-            title: Text('今日の御銘', style: TextStyle(fontFamily: 'Hannari'),),
+      body: Stack(
+        children: <Widget>[
+          CustomScrollView(
+            slivers: <Widget>[
+              const SliverAppBar(
+                floating: true,
+                title: Text('今日の御銘', style: TextStyle(fontFamily: 'Hannari'),),
+              ),
+              createMonthlySliverStickyHeader(context, Month.january),
+              createMonthlySliverStickyHeader(context, Month.february),
+              createMonthlySliverStickyHeader(context, Month.march),
+              createMonthlySliverStickyHeader(context, Month.april),
+              createMonthlySliverStickyHeader(context, Month.may),
+              createMonthlySliverStickyHeader(context, Month.june),
+              createMonthlySliverStickyHeader(context, Month.july),
+              createMonthlySliverStickyHeader(context, Month.august),
+              createMonthlySliverStickyHeader(context, Month.september),
+              createMonthlySliverStickyHeader(context, Month.october),
+              createMonthlySliverStickyHeader(context, Month.november),
+              createMonthlySliverStickyHeader(context, Month.december),
+              SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                        (BuildContext context, int index) {
+                          return Container(child: const Text(''),);
+                          },
+                    childCount: 5,
+                  )
+              )
+            ],
           ),
-          createMonthlySliverStickyHeader(context, Month.january),
-          createMonthlySliverStickyHeader(context, Month.february),
-          createMonthlySliverStickyHeader(context, Month.march),
-          createMonthlySliverStickyHeader(context, Month.april),
-          createMonthlySliverStickyHeader(context, Month.may),
-          createMonthlySliverStickyHeader(context, Month.june),
-          createMonthlySliverStickyHeader(context, Month.july),
-          createMonthlySliverStickyHeader(context, Month.august),
-          createMonthlySliverStickyHeader(context, Month.september),
-          createMonthlySliverStickyHeader(context, Month.october),
-          createMonthlySliverStickyHeader(context, Month.november),
-          createMonthlySliverStickyHeader(context, Month.december),
-        ],
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: useProvider(isPurchaseProvider).state
+              ? Container()
+              : Container(
+                alignment: Alignment.center,
+                width: bannerAdList[12].size.width.toDouble(),
+                height: bannerAdList[12].size.height.toDouble(),
+                child: AdWidget(ad: bannerAdList[12]),
+              ),
+          )
+        ]
       ),
     );
   }
@@ -446,6 +469,7 @@ List<BannerAd> bannerAdList =[
   _createMonthlyBannerAd(Month.october),
   _createMonthlyBannerAd(Month.november),
   _createMonthlyBannerAd(Month.december),
+  _createUnderBannerAd(),
 ];
 
 BannerAd _createMonthlyBannerAd(Month month){
@@ -458,56 +482,72 @@ BannerAd _createMonthlyBannerAd(Month month){
   );
 }
 
+BannerAd _createUnderBannerAd(){
+  final adUnitId = _getUnderAdUnitId();
+  return BannerAd(
+    adUnitId: adUnitId,
+    size: AdSize.fullBanner,
+    request: const AdRequest(),
+    listener: const BannerAdListener(),
+  );
+}
+
 String _getAdUnitId(Month month){
   switch(month){
     case Month.january:
       return Platform.isAndroid
-          ? 'ca-app-pub-3940256099942544/6300978111'
+          ? 'ca-app-pub-1175513766978931/1278583889'
           : 'ca-app-pub-1175513766978931/9306277985';
     case Month.february:
       return Platform.isAndroid
-          ? 'ca-app-pub-3940256099942544/6300978111'
+          ? 'ca-app-pub-1175513766978931/3411785026'
           : 'ca-app-pub-1175513766978931/6335310349';
     case Month.march:
       return Platform.isAndroid
-          ? 'ca-app-pub-3940256099942544/6300978111'
+          ? 'ca-app-pub-1175513766978931/2098703356'
           : 'ca-app-pub-1175513766978931/1769734592';
     case Month.april:
       return Platform.isAndroid
-          ? 'ca-app-pub-3940256099942544/6300978111'
+          ? 'ca-app-pub-1175513766978931/6780184398'
           : 'ca-app-pub-1175513766978931/7265248634';
     case Month.may:
       return Platform.isAndroid
-          ? 'ca-app-pub-3940256099942544/6300978111'
+          ? 'ca-app-pub-1175513766978931/1920747560'
           : 'ca-app-pub-1175513766978931/1821350263';
     case Month.june:
       return Platform.isAndroid
-          ? 'ca-app-pub-3940256099942544/6300978111'
+          ? 'ca-app-pub-1175513766978931/2625316968'
           : 'ca-app-pub-1175513766978931/9316696905';
     case Month.july:
       return Platform.isAndroid
-          ? 'ca-app-pub-3940256099942544/6300978111'
+          ? 'ca-app-pub-1175513766978931/8999153626'
           : 'ca-app-pub-1175513766978931/2751288557';
     case Month.august:
       return Platform.isAndroid
-          ? 'ca-app-pub-3940256099942544/6300978111'
+          ? 'ca-app-pub-1175513766978931/2840939380'
           : 'ca-app-pub-1175513766978931/3872798530';
     case Month.september:
       return Platform.isAndroid
-          ? 'ca-app-pub-3940256099942544/6300978111'
+          ? 'ca-app-pub-1175513766978931/7652420547'
           : 'ca-app-pub-1175513766978931/6115818491';
     case Month.october:
       return Platform.isAndroid
-          ? 'ca-app-pub-3940256099942544/6300978111'
+          ? 'ca-app-pub-1175513766978931/5059908611'
           : 'ca-app-pub-1175513766978931/5924246802';
     case Month.november:
       return Platform.isAndroid
-          ? 'ca-app-pub-3940256099942544/6300978111'
+          ? 'ca-app-pub-1175513766978931/5907259886'
           : 'ca-app-pub-1175513766978931/5732675111';
     case Month.december:
       return Platform.isAndroid
-          ? 'ca-app-pub-3940256099942544/6300978111'
+          ? 'ca-app-pub-1175513766978931/7159458340'
           : 'ca-app-pub-1175513766978931/1601858410';
   }
   return'';
+}
+
+String _getUnderAdUnitId() {
+  return Platform.isAndroid
+      ? 'ca-app-pub-1175513766978931/4345592747'
+      : 'ca-app-pub-1175513766978931/6290403264';
 }
