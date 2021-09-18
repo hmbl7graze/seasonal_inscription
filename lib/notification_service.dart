@@ -8,7 +8,7 @@ FlutterLocalNotificationsPlugin();
 
 Future<void> initializeNotification() async{
   const initializationSettingsAndroid =
-  AndroidInitializationSettings('app_icon');
+  AndroidInitializationSettings('icon');
   const initializationSettingsIOS = IOSInitializationSettings();
   const initializationSettingsMacOS = MacOSInitializationSettings();
   const initializationSettings = InitializationSettings(

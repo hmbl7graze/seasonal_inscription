@@ -310,7 +310,7 @@ class _ExpansionPanelListState extends State<CustomExpansionPanelList> {
     return MergeableMaterial(
       hasDividers: true,
       dividerColor: widget.dividerColor,
-      elevation: widget.elevation.round(),
+      elevation: widget.elevation,
       children: items,
     );
   }
