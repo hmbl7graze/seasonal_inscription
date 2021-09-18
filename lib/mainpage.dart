@@ -27,7 +27,9 @@ class MainPage extends HookWidget{
     }
 
     if(context.read(isPurchaseProvider).state != getIsPurchase()){
-      context.read(isPurchaseProvider).state = getIsPurchase();
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        context.read(isPurchaseProvider).state = getIsPurchase();
+      });
     }
 
     //日付が変わっていたらおすすめ画面を出す
