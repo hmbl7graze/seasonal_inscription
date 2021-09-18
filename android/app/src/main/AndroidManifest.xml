@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hmbl7graze.seasonal_inscription">
    <application
-        android:label="seasonal_inscription"
+        android:label="今日の御銘"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
